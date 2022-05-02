@@ -12,9 +12,10 @@ namespace ETITC_EquipmentControlAPI.Models
         public string Serial { get; set; }
         public string Img { get; set; }
         public string Observation { get; set; }
+        public bool IsActive { get; set; }
 
         // asociacion del usuario 
-        public int IdUser { get; set; }
+        public string UserIdentificationNumber { get; set; }
 
     }
 }

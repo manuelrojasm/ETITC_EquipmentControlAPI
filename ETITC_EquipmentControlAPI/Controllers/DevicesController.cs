@@ -43,6 +43,13 @@ namespace ETITC_EquipmentControlAPI.Controllers
             return Ok(await db.ReadDevices(Id));
         }
 
+
+        [HttpGet("ByUser/{UserIdentificationNumber}")]
+        public async Task<IActionResult> ReadByUserDevices(string identificationNumber)
+        {
+            return Ok(await db.ReadDevicesByUser(identificationNumber));
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDevices([FromBody] Devices device, string Id)
         {
@@ -69,6 +76,21 @@ namespace ETITC_EquipmentControlAPI.Controllers
             await db.DeleteDevice(Id);
             return NoContent();
         }
+
+        [HttpPut("Inactive/{id}")]
+        public async Task<IActionResult> InactiveDevice(string Id)
+        {
+            await db.InactiveDevice(Id);
+            return NoContent();
+        }
+
+        [HttpPut("Active/{id}")]
+        public async Task<IActionResult> ActiveDevice(string Id)
+        {
+            await db.ActiveDevice(Id);
+            return NoContent();
+        }
+
 
 
     }
