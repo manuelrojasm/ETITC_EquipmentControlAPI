@@ -38,7 +38,7 @@ namespace ETITC_EquipmentControlAPI.Repositories
             await Collection.ReplaceOneAsync(filter, registerDevices);
         }
       
-        public async Task DeleteUser(string Id)
+        public async Task DeleteRegisterDevices(string Id)
         {
             var filter = Builders<RegisterDevices>.Filter.Eq(s => s.Id, new ObjectId(Id));
             await Collection.DeleteOneAsync(filter);

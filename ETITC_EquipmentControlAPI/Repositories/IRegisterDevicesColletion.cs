@@ -8,5 +8,6 @@ namespace ETITC_EquipmentControlAPI.Repositories
         Task <RegisterDevices> ReadRegisterDevices(string Id);
         Task <List<RegisterDevices>> GetAllRegisterDevices();
         Task UpdateRegisterDevices(RegisterDevices registerDevices);
+        Task DeleteRegisterDevices(string Id);
     }
 }

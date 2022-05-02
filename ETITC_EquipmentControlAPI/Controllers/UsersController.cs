@@ -51,9 +51,9 @@ namespace ETITC_EquipmentControlAPI.Controllers
         }
 
         [HttpGet("{IdentificationNumber}")]
-        public async Task<IActionResult> ReadUser(string identificationNumber)
+        public async Task<IActionResult> ReadUser(string IdentificationNumber)
         {
-            return Ok(await db.ReadUser(identificationNumber));
+            return Ok(await db.ReadUser(IdentificationNumber));
         }
 
         [HttpPut("{id}")]

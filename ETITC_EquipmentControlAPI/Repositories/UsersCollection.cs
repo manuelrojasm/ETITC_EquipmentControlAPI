@@ -21,7 +21,7 @@ namespace ETITC_EquipmentControlAPI.Repositories
 
         public async Task<Users> ReadUser(string id)
         {
-            Users result = Collection.Find(e => e.IdentificationNumber == id).FirstOrDefault();
+            Users result = await Collection.FindAsync(e => e.IdentificationNumber == id).Result.FirstOrDefaultAsync();
  
             return result;
         }
