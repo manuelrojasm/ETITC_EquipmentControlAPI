@@ -44,7 +44,7 @@ namespace ETITC_EquipmentControlAPI.Controllers
             UsersDto.Email = internalUsers.Email;
             UsersDto.Telephone = internalUsers.Telephone;
             UsersDto.EntryDate = DateTime.Now;
-            UsersDto.status = true;
+            UsersDto.Status = true;
 
             await db.CreateUser(UsersDto);
             return Created("Usuario creado", true);
@@ -71,6 +71,14 @@ namespace ETITC_EquipmentControlAPI.Controllers
             user.Id = new MongoDB.Bson.ObjectId(id);
             await db.UpdateUser(user);
             return Created("Actulizado", true);
+        }
+
+        [HttpDelete("{IdentificationNumber}")]
+        public async Task<IActionResult> DeleteDevice(string IdentificationNumber)
+        {
+
+            await db.DeleteUser(IdentificationNumber);
+            return StatusCode(202);
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

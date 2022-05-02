@@ -11,7 +11,6 @@ namespace ETITC_EquipmentControlAPI.Repositories
         {   
             client = new MongoClient(Constants.Client);
             db = client.GetDatabase(Constants.DataBase);
-
         }
     }
 }

@@ -38,12 +38,19 @@ namespace ETITC_EquipmentControlAPI.Repositories
                 .Eq(s => s.IdentificationNumber, user.IdentificationNumber);
             await Collection.ReplaceOneAsync(filter, user);
         }
-/*
-        public async Task DeleteUser(string Id)
+
+        public async Task DeleteUser(string IdentificationNumber)
         {
-            var filter = Builders<Users>.Filter.Eq(s => s.Id, new ObjectId(Id));
-            await Collection.DeleteOneAsync(filter);
+
+            var filter = Builders<Users>
+                .Filter
+                .Eq(s => s.IdentificationNumber, IdentificationNumber);
+
+            var result = await Collection.FindAsync(filter).Result.FirstOrDefaultAsync();
+            result.Status = false;
+
+            await Collection.ReplaceOneAsync(filter, result);
         }
-*/
+
     }
 }

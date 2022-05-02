@@ -8,6 +8,6 @@ namespace ETITC_EquipmentControlAPI.Repositories
         Task <Users> ReadUser(string Id);
         Task <List<Users>> GetAllUsers();
         Task UpdateUser(Users user);
-        //Task DeleteUser(string Id);
+        Task DeleteUser(string IdentificationNumber);
     }
 }

@@ -16,7 +16,7 @@ namespace ETITC_EquipmentControlAPI.Models
         public string Email { get; set; }
         public string Telephone { get; set; }
         public DateTime EntryDate { get; set; }
-        public bool status{ get; set; }
+        public bool Status{ get; set; }
 
     }
 }

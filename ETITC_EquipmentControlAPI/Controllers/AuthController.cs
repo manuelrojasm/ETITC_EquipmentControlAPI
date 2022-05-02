@@ -50,7 +50,7 @@ namespace ETITC_EquipmentControlAPI.Controllers
             LoggedUsersDto.Telephone = user.Email;
             LoggedUsersDto.Token = CreateToken(user);
             LoggedUsersDto.ExpirationToken = DateTime.Now.AddMinutes(30);
-            LoggedUsersDto.status = user.status;   
+            LoggedUsersDto.status = user.Status;   
             
             return Ok(LoggedUsersDto);
         }
