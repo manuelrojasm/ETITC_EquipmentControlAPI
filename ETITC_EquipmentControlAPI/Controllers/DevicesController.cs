@@ -44,10 +44,10 @@ namespace ETITC_EquipmentControlAPI.Controllers
         }
 
 
-        [HttpGet("ByUser/{UserIdentificationNumber}")]
-        public async Task<IActionResult> ReadByUserDevices(string identificationNumber)
+        [HttpGet("ByUser/{IdentificationNumber}")]
+        public async Task<IActionResult> ReadByUserDevices(string IdentificationNumber)
         {
-            return Ok(await db.ReadDevicesByUser(identificationNumber));
+            return Ok(await db.ReadDevicesByUser(IdentificationNumber));
         }
 
         [HttpPut("{id}")]
