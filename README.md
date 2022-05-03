@@ -33,7 +33,7 @@ git clone https://github.com/manuelrojasm/ETITC_EquipmentControlAPI.git
     {
         public static string DataBase = "(nombre de la coleccion)";
         public static string Client = "(Conexion de la BD)"
-        public const string SecrectKey = "(Llave pribada)";
+        public const string SecrectKey = "(Llave privada)";
     }
 ```
 
