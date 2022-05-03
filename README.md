@@ -36,7 +36,7 @@ git clone https://github.com/manuelrojasm/ETITC_EquipmentControlAPI.git
         public const string SecrectKey = "(Llave privada)";
     }
 ```
-5. Modifique Constants.cs agregando el nombre que quiere dar a la Colección en DataBase, el texto de conexión proporcionado por MongoDB en Client y en SecretKey un Hasta o texto secreto que usted proporcione para usar como llave en la encriptación.
+5. Modifique Constants.cs agregando el nombre que quiere dar a la Colección en DataBase, el texto de conexión proporcionado por MongoDB en Client y en SecretKey un Hash o texto secreto que usted proporcione para usar como llave en la encriptación.
 
 **Si lo puedes imaginar, Lo puedes Programar!**
 
