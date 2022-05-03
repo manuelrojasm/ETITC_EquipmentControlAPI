@@ -23,7 +23,7 @@ Requiere [Git](https://git-scm.com/).
 1. Clone el repositorio, desde una terminal
 
 ```sh
-git clone https://github.com/manuelrojasm/ETITC_EquipmentControl.git
+git clone https://github.com/manuelrojasm/ETITC_EquipmentControlAPI.git
 ```
 2. En Visual Studio abra como proyecto el repositorio descargado.
 3. Cree una Clase en la raíz llamada "Constants.cs" 
