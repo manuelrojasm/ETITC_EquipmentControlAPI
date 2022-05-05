@@ -1,5 +1,6 @@
 ﻿using ETITC_EquipmentControlAPI.Models;
 using ETITC_EquipmentControlAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -14,7 +15,7 @@ namespace ETITC_EquipmentControlAPI.Controllers
         private IUsersColletion db = new UsersColletion();
         public static Users UsersDto = new Users();
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> GetAllUsers()
         {
             return Ok(await db.GetAllUsers());
@@ -50,13 +51,13 @@ namespace ETITC_EquipmentControlAPI.Controllers
             return Created("Usuario creado", true);
         }
 
-        [HttpGet("{IdentificationNumber}")]
+        [HttpGet("{IdentificationNumber}"), Authorize]
         public async Task<IActionResult> ReadUser(string IdentificationNumber)
         {
             return Ok(await db.ReadUser(IdentificationNumber));
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task<IActionResult> UpdateUser([FromBody] Users user, string id)
         {
             if (user == null)
@@ -73,7 +74,7 @@ namespace ETITC_EquipmentControlAPI.Controllers
             return Created("Actulizado", true);
         }
 
-        [HttpDelete("{IdentificationNumber}")]
+        [HttpDelete("{IdentificationNumber}"), Authorize]
         public async Task<IActionResult> DeleteDevice(string IdentificationNumber)
         {
 

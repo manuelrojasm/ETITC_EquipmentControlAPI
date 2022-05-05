@@ -1,5 +1,6 @@
 ﻿using ETITC_EquipmentControlAPI.Models;
 using ETITC_EquipmentControlAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -12,13 +13,13 @@ namespace ETITC_EquipmentControlAPI.Controllers
     {
         private IRegisterDevicesColletion db = new RegisterDevicesColletion();
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> GetAllRegisterDevices()
         {
             return Ok(await db.GetAllRegisterDevices());
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<IActionResult> CreateRegisterDevices([FromBody] RegisterDevices registerDevices)
         {
             if (registerDevices == null)
@@ -28,13 +29,13 @@ namespace ETITC_EquipmentControlAPI.Controllers
             return Created("Registro creado", true);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<IActionResult> ReadRegisterDevices(string Id)
         {
             return Ok(await db.ReadRegisterDevices(Id));
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task<IActionResult> UpdateRegisterDevices([FromBody] RegisterDevices registerDevices, string Id)
         {
             registerDevices.Id = new MongoDB.Bson.ObjectId(Id);
@@ -42,7 +43,7 @@ namespace ETITC_EquipmentControlAPI.Controllers
             return Created("Actulizaste el registro", true);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<IActionResult> DeleteRegisterDevices(string id)
         {
             await db.DeleteRegisterDevices(id);

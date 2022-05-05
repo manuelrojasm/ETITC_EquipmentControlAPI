@@ -1,5 +1,6 @@
 ﻿using ETITC_EquipmentControlAPI.Models;
 using ETITC_EquipmentControlAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -22,6 +23,14 @@ namespace ETITC_EquipmentControlAPI.Controllers
         public AuthController(IConfiguration configuration)
         {
             _configuration = configuration;
+        }
+
+        [HttpGet, Authorize]
+
+        public ActionResult<string> GetMe()
+        {
+            var userName = User?.Identity?.Name;
+            return Ok(userName);
         }
 
         [HttpPost("login")]
@@ -68,7 +77,8 @@ namespace ETITC_EquipmentControlAPI.Controllers
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Name)
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Role, "User")
             };
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(Constants.SecrectKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
